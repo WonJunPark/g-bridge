@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%= request.getParameter("name") %> 님 환영합니다.
+	<hr>
 	현재 날짜와 시간은 : <%= java.time.LocalDateTime.now() %>
 </body>
 </html>
