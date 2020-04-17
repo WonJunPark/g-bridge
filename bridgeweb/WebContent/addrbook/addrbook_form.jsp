@@ -9,7 +9,8 @@
 <body>
 	<h2>주소록::등록양식</h2>
 	<hr>
-	<form>
+	<form action="addrbook_control.jsp" method="post">
+		<input type="hidden" name="action" value="insert">
 		<div>
 			<label for="ab_name">Name: </label>
 			<input type="text" name="ab_name">
@@ -39,6 +40,8 @@
 			<label for="ab_memo">Memo: </label>
 			<input type="text" name="ab_memo">
 		</div>
+		<input type="submit" value="등록">
+		<input type="reset" value="취소">
 	</form>
 </body>
 </html>
