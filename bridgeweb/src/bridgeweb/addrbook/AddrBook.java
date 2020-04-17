@@ -8,6 +8,7 @@ public class AddrBook {
 	private String ab_birth;
 	private String ab_tel;
 	private String ab_memo;
+	
 	public int getAb_id() {
 		return ab_id;
 	}
