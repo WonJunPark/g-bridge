@@ -13,12 +13,9 @@ public class AddrBookH2DAO implements AddrBookDAO {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	
-	/* H2 DB 연결정보 */
 	String jdbc_driver = "org.h2.Driver";
 	String jdbc_url = "jdbc:h2:tcp://localhost/~/bridgedb";
 	
-
-	// DB연결 메서드
 	void connect() {
 		try {
 			Class.forName(jdbc_driver);
@@ -45,7 +42,6 @@ public class AddrBookH2DAO implements AddrBookDAO {
 		}
 	}
 	
-	// 수정된 주소록 내용 갱신을 위한 메서드
 	/* (non-Javadoc)
 	 * @see javaweb.addrbook.AddrBookDAO#updateDB(javaweb.addrbook.AddrBook)
 	 */
@@ -54,7 +50,7 @@ public class AddrBookH2DAO implements AddrBookDAO {
 		connect();
 		
 		String sql ="update addrbook set ab_name=?, ab_email=?, ab_birth=?, ab_tel=?, ab_comdept=?, ab_memo=? where ab_id=?";		
-		 
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,addrbook.getAb_name());
@@ -75,7 +71,6 @@ public class AddrBookH2DAO implements AddrBookDAO {
 		return true;
 	}
 	
-	// 특정 주소록 게시글 삭제 메서드
 	/* (non-Javadoc)
 	 * @see javaweb.addrbook.AddrBookDAO#deleteDB(int)
 	 */
@@ -99,7 +94,6 @@ public class AddrBookH2DAO implements AddrBookDAO {
 		return true;
 	}
 	
-	// 신규 주소록 메시지 추가 메서드
 	/* (non-Javadoc)
 	 * @see javaweb.addrbook.AddrBookDAO#insertDB(javaweb.addrbook.AddrBook)
 	 */
@@ -128,7 +122,6 @@ public class AddrBookH2DAO implements AddrBookDAO {
 		return true;
 	}
 
-	// 특정 주소록 게시글 가져오는 메서드
 	/* (non-Javadoc)
 	 * @see javaweb.addrbook.AddrBookDAO#getDB(int)
 	 */
@@ -144,7 +137,6 @@ public class AddrBookH2DAO implements AddrBookDAO {
 			pstmt.setInt(1,gb_id);
 			ResultSet rs = pstmt.executeQuery();
 			
-			// 데이터가 하나만 있으므로 rs.next()를 한번만 실행 한다.
 			rs.next();
 			addrbook.setAb_id(rs.getInt("ab_id"));
 			addrbook.setAb_name(rs.getString("ab_name"));
@@ -163,7 +155,6 @@ public class AddrBookH2DAO implements AddrBookDAO {
 		return addrbook;
 	}
 	
-	// 전체 주소록 목록을 가져오는 메서드
 	/* (non-Javadoc)
 	 * @see javaweb.addrbook.AddrBookDAO#getDBList()
 	 */
@@ -199,9 +190,3 @@ public class AddrBookH2DAO implements AddrBookDAO {
 	}
 
 }
-
-
-
-
-
-
